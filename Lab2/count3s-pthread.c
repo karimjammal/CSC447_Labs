@@ -73,16 +73,23 @@ int main(int argc, char *argv[])
       array[i] = rand()%10;
    }
 
-   count3s();  /* run the threads, wait till they finish */
+   // count3s();  /* run the threads, wait till they finish */
 
-   printf("The number of 3's is %d\n", count);
+   // printf("The number of 3's is %d\n", count);
 
    /* As a test, let us count 3's the slow, serial way. */
    count = 0;
+
+   clock_t start_t = clock();
    for(i = 0; i < length; i++)
       if(array[i] == 3)
          count++;
+   clock_t end_t = clock();
+
    printf("The number of 3's is %d\n", count);
+
+    double total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+    printf("Total time taken: %f\n", total_t);
 
    return 0;
 }
