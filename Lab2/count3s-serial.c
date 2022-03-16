@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
    array = calloc(length, sizeof(int));
 
    /* initialize the array with random integers between 0 and 9 */
-   srand(time(NULL));  /* seed the random number generator with current time */
+   srand(time(NULL));
    for(i = 0; i < length; i++)
    {
       array[i] = rand()%10;
