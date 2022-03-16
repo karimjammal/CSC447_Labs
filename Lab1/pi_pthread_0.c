@@ -37,14 +37,14 @@ void main()
 	pthread_t *thread;
     struct pthread_args *thread_arg;
 
-	thread = malloc((unsigned long)num_threads * sizeof(*thread));
-	thread_arg = malloc((unsigned long)num_threads * sizeof(*thread_arg));
+	// thread = malloc((unsigned long)num_threads * sizeof(*thread));
+	// thread_arg = malloc((unsigned long)num_threads * sizeof(*thread_arg));
 
 	for (int i = 0; i < num_threads; i++)
 	{
 		thread_arg[i].lower = (i+0) * (1.0 / (double)num_threads);
 		thread_arg[i].upper = (i+1) * (1.0 / (double)num_threads);
-		pthread_create(thread + i, NULL, &pi_thread, thread_arg + i);
+		// pthread_create(thread + i, NULL, &pi_thread, thread_arg + i);
 	}
 
 	for (int i = 0; i < num_threads; i++)
