@@ -62,9 +62,7 @@ void *count3s_thread(void *id)
 int main(int argc, char *argv[])
 {
    int i;
-   length = 10000; /*  2^20  */
-                   // t = 4;  /*** be sure that t divides length!! ***/
-
+   length = 1048576; /*  2^20  */
    array = calloc(length, sizeof(int));
 
    /* initialize the array with random integers between 0 and 9 */
@@ -76,17 +74,22 @@ int main(int argc, char *argv[])
 
    for (t = 1; t <= 50; t += 4)
    {
+      if (t == 5)
+         t -= 1;
+
       printf("run: %d\n", t);
-      clock_t start_t = clock();
+      // clock_t start_t = clock();
       count3s(); /* run the threads, wait till they finish */
-      clock_t end_t = clock();
+      // clock_t end_t = clock();
       printf("The number of 3's is %d\n", count);
 
       /* As a test, let us count 3's the slow, serial way. */
       count = 0;
+      clock_t start_t = clock();
       for (i = 0; i < length; i++)
          if (array[i] == 3)
             count++;
+      clock_t end_t = clock();
       printf("The number of 3's is %d\n", count);
 
       double total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
