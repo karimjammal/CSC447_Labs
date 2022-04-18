@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 10000
+#define N 100000
 
 int A[N];
 
